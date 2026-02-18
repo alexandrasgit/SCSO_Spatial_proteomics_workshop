@@ -1,0 +1,5 @@
+format: jb-book
+root: intro
+chapters:
+  - file: exercise1
+  - file: exercise2
