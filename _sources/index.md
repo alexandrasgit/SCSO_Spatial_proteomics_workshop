@@ -19,7 +19,7 @@ By the end of this workshop, you will be able to:
 
 ---
 
-## ⏱Workshop Schedule
+## Workshop Schedule
 
 | Activity | Duration | Focus |
 | :--- | :--- | :--- |
@@ -27,14 +27,6 @@ By the end of this workshop, you will be able to:
 | **Exercise 1: Technical** | 20 Min | Bit-depth, Scaling, & ROI Export |
 | **Exercise 2: Biological** | 20 Min | Phenotyping & Tissue Architecture |
 | **Discussion & Q&A** | 5 Min | Data sharing & Future formats |
-
----
-
-## Pre-requisites
-
-* A basic understanding of fluorescence microscopy.
-* Familiarity with common protein markers (e.g., DAPI, CD3, CK).
-* A stable internet connection for the web viewers.
 
 ---
 

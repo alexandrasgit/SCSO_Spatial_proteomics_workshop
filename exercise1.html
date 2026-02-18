@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 1: Technical Foundations of Digital Pathology &#8212; Spatial Proteomics Workshop 2026</title>
+    <title>Exercise 1: Technical foundations of digital pathology &#8212; Spatial Proteomics Workshop 2026</title>
   
   
   
@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercise1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Exercise 2: Biological Interpretation &amp; Cell Phenotyping" href="exercise2.html" />
+    <link rel="next" title="Exercise 2: Biological interpretation &amp; cell phenotyping" href="exercise2.html" />
     <link rel="prev" title="Spatial Proteomics: From Pixels to Phenotypes" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -170,8 +170,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercise 1: Technical Foundations of Digital Pathology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercise2.html">Exercise 2: Biological Interpretation &amp; Cell Phenotyping</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercise 1: Technical foundations of digital pathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise2.html">Exercise 2: Biological interpretation &amp; cell phenotyping</a></li>
 </ul>
 
     </div>
@@ -310,7 +310,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 1: Technical Foundations of Digital Pathology</h1>
+    <h1>Exercise 1: Technical foundations of digital pathology</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -320,11 +320,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">🚀 Getting Started</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-understanding-multiplexed-channels">Step 1: Understanding Multiplexed Channels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-intensity-ranges-bit-depth">Step 2: Intensity Ranges &amp; Bit Depth</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-spatial-metadata-pixels-vs-microns">Step 3: Spatial Metadata (Pixels vs. Microns)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-composites-data-integrity">Step 4: Composites &amp; Data Integrity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-multiplexed-channels">Understanding multiplexed channels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intensity-ranges-bit-depth">Intensity ranges &amp; bit depth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-metadata-pixels-vs-microns">Spatial metadata (Pixels vs. Microns)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composites-data-integrity">Composites &amp; data integrity</a></li>
 </ul>
             </nav>
         </div>
@@ -337,23 +337,23 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-1-technical-foundations-of-digital-pathology">
-<h1>Exercise 1: Technical Foundations of Digital Pathology<a class="headerlink" href="#exercise-1-technical-foundations-of-digital-pathology" title="Permalink to this heading">#</a></h1>
+<h1>Exercise 1: Technical foundations of digital pathology<a class="headerlink" href="#exercise-1-technical-foundations-of-digital-pathology" title="Permalink to this heading">#</a></h1>
 <p>In this exercise, we use <strong>Avivator</strong>, a lightweight, web-based visualizer for high-bit-depth OME-TIFF images. While we are using a web tool, the principles of contrast adjustment, bit depth, and spatial metadata apply to all major platforms like <strong>Napari</strong>, <strong>QuPath</strong>, and <strong>Fiji</strong>.</p>
 <section id="getting-started">
-<h2>🚀 Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Launch the Viewer:</strong> <a class="reference external" href="https://avivator.gehlenborglab.org/?image_url=https://viv-demo.storage.googleapis.com/LuCa-7color_3x3component_data.ome.tif">Click here to open the Lung Cancer (LuCa) 7-color dataset in Avivator</a>.</p></li>
 <li><p><strong>Explore the Interface:</strong> On the right-hand side, you will see the <strong>Channel Controller</strong>.</p></li>
 </ol>
 </section>
 <hr class="docutils" />
-<section id="step-1-understanding-multiplexed-channels">
-<h2>Step 1: Understanding Multiplexed Channels<a class="headerlink" href="#step-1-understanding-multiplexed-channels" title="Permalink to this heading">#</a></h2>
+<section id="understanding-multiplexed-channels">
+<h2>Understanding multiplexed channels<a class="headerlink" href="#understanding-multiplexed-channels" title="Permalink to this heading">#</a></h2>
 <p>Click on any channel name to expand the full list.</p>
-<ul class="simple">
-<li><p><strong>Task:</strong> Count the available channels and look at the metadata (wavelengths/names).</p></li>
-<li><p><strong>Question:</strong> How many channels are present, and what is the relationship between the wavelength (nm) and the assigned color?</p></li>
-</ul>
+<div class="admonition-task-count-the-available-channels-and-look-at-the-metadata-wavelengths-names admonition">
+<p class="admonition-title">TASK: Count the available channels and look at the metadata (wavelengths/names).</p>
+<p><strong>Question:</strong> How many channels are present, and what is the relationship between the wavelength (nm) and the assigned color?</p>
+</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Click for Answer<div class="sd-summary-down docutils">
@@ -365,8 +365,8 @@ Click for Answer<div class="sd-summary-down docutils">
 </div>
 </details></section>
 <hr class="docutils" />
-<section id="step-2-intensity-ranges-bit-depth">
-<h2>Step 2: Intensity Ranges &amp; Bit Depth<a class="headerlink" href="#step-2-intensity-ranges-bit-depth" title="Permalink to this heading">#</a></h2>
+<section id="intensity-ranges-bit-depth">
+<h2>Intensity ranges &amp; bit depth<a class="headerlink" href="#intensity-ranges-bit-depth" title="Permalink to this heading">#</a></h2>
 <p>Spatial proteomics data often has a much wider dynamic range than standard photos.</p>
 <ol class="arabic simple">
 <li><p>Toggle all channels <strong>OFF</strong> except for one.</p></li>
@@ -374,14 +374,14 @@ Click for Answer<div class="sd-summary-down docutils">
 <li><p>Open the “three-dot” menu next to the channel and select <strong>“Full”</strong>.</p></li>
 </ol>
 <div class="tip admonition">
-<p class="admonition-title">BONUS: Bit Depth Discovery</p>
+<p class="admonition-title">TASK: Bit depth discovery</p>
 <p>Based on the maximum value visible on the slider when set to “Full,” what is the <strong>bit depth</strong> of this image?
 <em>Hint: <span class="math notranslate nohighlight">\(2^8 = 256\)</span>, <span class="math notranslate nohighlight">\(2^{16} = 65,536\)</span>.</em></p>
 </div>
 </section>
 <hr class="docutils" />
-<section id="step-3-spatial-metadata-pixels-vs-microns">
-<h2>Step 3: Spatial Metadata (Pixels vs. Microns)<a class="headerlink" href="#step-3-spatial-metadata-pixels-vs-microns" title="Permalink to this heading">#</a></h2>
+<section id="spatial-metadata-pixels-vs-microns">
+<h2>Spatial metadata (Pixels vs. Microns)<a class="headerlink" href="#spatial-metadata-pixels-vs-microns" title="Permalink to this heading">#</a></h2>
 <p>Visualization is only useful if it is spatially accurate.</p>
 <ul class="simple">
 <li><p><strong>Hover &amp; Inspect:</strong> Move your mouse over a bright cell. Observe the intensity value changing in the UI.</p></li>
@@ -389,21 +389,21 @@ Click for Answer<div class="sd-summary-down docutils">
 </ul>
 <p><strong>Question:</strong> What is the physical size of one pixel in microns (<span class="math notranslate nohighlight">\(\mu m\)</span>)?</p>
 <div class="tip admonition">
-<p class="admonition-title">BONUS: Why does pixel size matter?</p>
+<p class="admonition-title">TASK: Why does pixel size matter?</p>
 <p>How would an incorrect pixel-to-micron scale affect your calculation of <strong>cell density</strong> or <strong>cell-to-cell distance</strong> in a spatial neighborhood analysis?</p>
 </div>
 </section>
 <hr class="docutils" />
-<section id="step-4-composites-data-integrity">
-<h2>Step 4: Composites &amp; Data Integrity<a class="headerlink" href="#step-4-composites-data-integrity" title="Permalink to this heading">#</a></h2>
+<section id="composites-data-integrity">
+<h2>Composites &amp; data integrity<a class="headerlink" href="#composites-data-integrity" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Activate these 6 channels: <strong>PDL1, CD8, FoxP3, CD68, CK, and DAPI</strong>.</p></li>
 <li><p>Customize the colors to create a high-contrast “Snapshot.”</p></li>
-<li><p><strong>Right-click → Save Image As</strong> to take a snapshot of a Region of Interest (ROI).</p></li>
+<li><p><strong>Right-click → Save As</strong> to take a snapshot of a Region of Interest (ROI).</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Critical Thinking: The “Snapshot” Trap
+<p>Critical Thinking: “Snapshot” trap
 Your colleague saves a snapshot from Avivator (a <code class="docutils literal notranslate"><span class="pre">.png</span></code> or <code class="docutils literal notranslate"><span class="pre">.jpg</span></code>) and uses it for downstream intensity quantification instead of using a cropping tool like QuPath.</p>
 <p><strong>Are these results equivalent to using the raw OME-TIFF? Why or why not?</strong></p>
 </div>
@@ -463,7 +463,7 @@ Click for the Explanation<div class="sd-summary-down docutils">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercise 2: Biological Interpretation &amp; Cell Phenotyping</p>
+        <p class="prev-next-title">Exercise 2: Biological interpretation &amp; cell phenotyping</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -483,11 +483,11 @@ Click for the Explanation<div class="sd-summary-down docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">🚀 Getting Started</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-understanding-multiplexed-channels">Step 1: Understanding Multiplexed Channels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-intensity-ranges-bit-depth">Step 2: Intensity Ranges &amp; Bit Depth</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-spatial-metadata-pixels-vs-microns">Step 3: Spatial Metadata (Pixels vs. Microns)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-composites-data-integrity">Step 4: Composites &amp; Data Integrity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-multiplexed-channels">Understanding multiplexed channels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intensity-ranges-bit-depth">Intensity ranges &amp; bit depth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-metadata-pixels-vs-microns">Spatial metadata (Pixels vs. Microns)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composites-data-integrity">Composites &amp; data integrity</a></li>
 </ul>
   </nav></div>
 

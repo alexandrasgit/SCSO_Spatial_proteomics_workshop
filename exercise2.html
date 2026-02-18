@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 2: Biological Interpretation &amp; Cell Phenotyping &#8212; Spatial Proteomics Workshop 2026</title>
+    <title>Exercise 2: Biological interpretation &amp; cell phenotyping &#8212; Spatial Proteomics Workshop 2026</title>
   
   
   
@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercise2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Exercise 1: Technical Foundations of Digital Pathology" href="exercise1.html" />
+    <link rel="prev" title="Exercise 1: Technical foundations of digital pathology" href="exercise1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,8 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="exercise1.html">Exercise 1: Technical Foundations of Digital Pathology</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercise 2: Biological Interpretation &amp; Cell Phenotyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise1.html">Exercise 1: Technical foundations of digital pathology</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercise 2: Biological interpretation &amp; cell phenotyping</a></li>
 </ul>
 
     </div>
@@ -309,7 +309,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 2: Biological Interpretation & Cell Phenotyping</h1>
+    <h1>Exercise 2: Biological interpretation & cell phenotyping</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -319,18 +319,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-from-pixels-to-segments">Part 1: From Pixels to Segments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions">Reflection Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-pixels-to-segments">From pixels to segments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-phenotypes">Defining phenotypes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morphology-lineage">Morphology &amp; Lineage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subcellular-localization">Subcellular localization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-defining-phenotypes">Part 2: Defining Phenotypes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-a-morphology-lineage">Section A: Morphology &amp; Lineage</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-b-subcellular-localization">Section B: Subcellular Localization</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-lineage-vs-functional-markers">Part 3: Lineage vs. Functional Markers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lineage-vs-functional-markers">Lineage vs. functional markers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-real-world-challenge-signal-aggregation">The “Real World” Challenge: Signal Aggregation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-findings">📝 Summary of Findings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-findings">Summary of Findings</a></li>
 </ul>
             </nav>
         </div>
@@ -343,45 +340,48 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-biological-interpretation-cell-phenotyping">
-<h1>Exercise 2: Biological Interpretation &amp; Cell Phenotyping<a class="headerlink" href="#exercise-2-biological-interpretation-cell-phenotyping" title="Permalink to this heading">#</a></h1>
+<h1>Exercise 2: Biological interpretation &amp; cell phenotyping<a class="headerlink" href="#exercise-2-biological-interpretation-cell-phenotyping" title="Permalink to this heading">#</a></h1>
 <p>Now that you’ve mastered the technical aspects of image viewing, we will apply these skills to a real-world clinical sample: a <strong>Lung Cancer specimen</strong> imaged via Cyclic Immunofluorescence (t-CyCIF).</p>
-<section id="part-1-from-pixels-to-segments">
-<h2>Part 1: From Pixels to Segments<a class="headerlink" href="#part-1-from-pixels-to-segments" title="Permalink to this heading">#</a></h2>
+<section id="from-pixels-to-segments">
+<h2>From pixels to segments<a class="headerlink" href="#from-pixels-to-segments" title="Permalink to this heading">#</a></h2>
 <p>Before we can count cells, a computer must “segment” them—drawing a digital boundary around every individual cell based on nuclear (DAPI) and/or membrane/cytoplasmic markers.</p>
-<p><strong>Task 1:</strong> Open the <a class="reference external" href="https://www.cycif.org/data/du-lin-rashid-nat-protoc-2019/osd-LUNG_3_DATA#s=0#w=0#g=0#m=-1#a=-100_-100#v=1_0.6508_0.5#o=-100_-100_1_1#p=Q">LUNG-3 Data Processing Tour</a>.</p>
+<div class="tip admonition">
+<p class="admonition-title">TASK: Open the <a class="reference external" href="https://www.cycif.org/data/du-lin-rashid-nat-protoc-2019/osd-LUNG_3_DATA#s=0#w=0#g=0#m=-1#a=-100_-100#v=1_0.6508_0.5#o=-100_-100_1_1#p=Q">LUNG-3 Data Processing Tour</a>.</p>
 <ol class="arabic simple">
 <li><p>Navigate to the <strong>“Cell Segmentation”</strong> page of the tour.</p></li>
 <li><p>Toggle the <strong>Tumor Cells</strong> and <strong>Immune Cells</strong> data labels in the viewer.</p></li>
 <li><p>Observe the “Masks” (the colored outlines representing individual cells).</p></li>
 </ol>
-<section id="reflection-questions">
-<h3>Reflection Questions<a class="headerlink" href="#reflection-questions" title="Permalink to this heading">#</a></h3>
+<p><strong>Questions:</strong></p>
 <ul class="simple">
 <li><p><strong>Morphology vs. Mask:</strong> How does the segmentation algorithm handle a large, sprawling Tumor cell versus a small, round Lymphocyte?</p></li>
 <li><p><strong>Identify Errors:</strong> Can you find an area where two cells are merged into one mask (<strong>Under-segmentation</strong>) or one cell is split into two (<strong>Over-segmentation</strong>)?</p></li>
 <li><p><strong>Downstream Bias:</strong> If the computer misses the cell boundary and captures signal from a neighbor, how will that affect your “Mean Intensity” data?</p></li>
 </ul>
-</section>
+</div>
 </section>
 <hr class="docutils" />
-<section id="part-2-defining-phenotypes">
-<h2>Part 2: Defining Phenotypes<a class="headerlink" href="#part-2-defining-phenotypes" title="Permalink to this heading">#</a></h2>
+<section id="defining-phenotypes">
+<h2>Defining phenotypes<a class="headerlink" href="#defining-phenotypes" title="Permalink to this heading">#</a></h2>
 <p>A <strong>Cell Phenotype</strong> is the observable identity of a cell, defined by the specific combination of proteins it expresses.</p>
-<p><strong>Task 2:</strong> Switch to the <a class="reference external" href="https://www.cycif.org/data/du-lin-rashid-nat-protoc-2019/osd-LUNG_3#s=0#w=0#g=0#m=-1#a=-100_-100#v=1_0.6508_0.5#o=-100_-100_1_1#p=Q">LUNG-3 Histology &amp; Phenotype Viewer</a>. Follow the <strong>“Step-by-Step Tour”</strong> narrative on the left panel and answer the following:</p>
-<section id="section-a-morphology-lineage">
-<h3>Section A: Morphology &amp; Lineage<a class="headerlink" href="#section-a-morphology-lineage" title="Permalink to this heading">#</a></h3>
+<div class="tip admonition">
+<p class="admonition-title">TASK:</p>
+<p>Switch to the <a class="reference external" href="https://www.cycif.org/data/du-lin-rashid-nat-protoc-2019/osd-LUNG_3#s=0#w=0#g=0#m=-1#a=-100_-100#v=1_0.6508_0.5#o=-100_-100_1_1#p=Q">LUNG-3 Histology &amp; Phenotype Viewer</a>.</p>
+</div>
+<section id="morphology-lineage">
+<h3>Morphology &amp; Lineage<a class="headerlink" href="#morphology-lineage" title="Permalink to this heading">#</a></h3>
 <p>Spatial proteomics allows us to distinguish cells not just by <em>what</em> they express, but by <em>how they look</em>.</p>
+<div class="tip admonition">
+<p class="admonition-title">TASK:</p>
 <ul class="simple">
-<li><p><strong>The Ratio Challenge:</strong> Compare a <strong>Keratin+</strong> epithelial cell to a <strong>CD3+</strong> lymphocyte.</p>
-<ul>
+<li><p><strong>The Ratio Challenge:</strong> Compare a <strong>Keratin+</strong> epithelial cell to a <strong>CD3+</strong> lymphocyte.</p></li>
 <li><p><strong>Question:</strong> Which cell type typically has a higher cytoplasm-to-nucleus ratio?</p></li>
-</ul>
-</li>
 <li><p><strong>Estimation:</strong> Using the scale-bar in the viewer, what is the approximate diameter (in <span class="math notranslate nohighlight">\(\mu m\)</span>) of a typical lymphocyte in this tissue?</p></li>
 </ul>
+</div>
 </section>
-<section id="section-b-subcellular-localization">
-<h3>Section B: Subcellular Localization<a class="headerlink" href="#section-b-subcellular-localization" title="Permalink to this heading">#</a></h3>
+<section id="subcellular-localization">
+<h3>Subcellular localization<a class="headerlink" href="#subcellular-localization" title="Permalink to this heading">#</a></h3>
 <p>Knowing <em>where</em> a protein is supposed to be helps us identify real signal from “noise.”</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -406,24 +406,30 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p><strong>Task:</strong> Identify one marker in this image that is purely <strong>Nuclear</strong> and one that is purely <strong>Membranous</strong>.</p>
+<div class="tip admonition">
+<p class="admonition-title">TASK:</p>
+<p>Identify one marker in this image that is purely <strong>Nuclear</strong> and one that is purely <strong>Membranous</strong>.</p>
+</div>
 </section>
 </section>
 <hr class="docutils" />
-<section id="part-3-lineage-vs-functional-markers">
-<h2>Part 3: Lineage vs. Functional Markers<a class="headerlink" href="#part-3-lineage-vs-functional-markers" title="Permalink to this heading">#</a></h2>
+<section id="lineage-vs-functional-markers">
+<h2>Lineage vs. functional markers<a class="headerlink" href="#lineage-vs-functional-markers" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Lineage Markers:</strong> Define the cell “type” (e.g., “I am a T-cell”).</p></li>
 <li><p><strong>Functional Markers:</strong> Define the cell “state” (e.g., “I am currently dividing”).</p></li>
 </ul>
-<p><strong>Question:</strong> Locate <strong>Ki67</strong> in the viewer. Since it only appears when a cell is in the active phases of the cell cycle, is it a Lineage or Functional marker? Why?</p>
+<div class="tip admonition">
+<p class="admonition-title">TASK:</p>
+<p>Locate <strong>Ki67</strong> in the viewer. Since it only appears when a cell is in the active phases of the cell cycle, is it a Lineage or Functional marker? Why?</p>
+</div>
 </section>
 <hr class="docutils" />
 <section id="the-real-world-challenge-signal-aggregation">
 <h2>The “Real World” Challenge: Signal Aggregation<a class="headerlink" href="#the-real-world-challenge-signal-aggregation" title="Permalink to this heading">#</a></h2>
 <p>Navigate to the <strong>“Cytotoxic T-cells”</strong> tab and zoom in on a dense cluster of CD8/CD3 positive cells.</p>
 <div class="danger admonition">
-<p class="admonition-title">BONUS: The Segmentation Headache</p>
+<p class="admonition-title">BONUS: Segmentation headache</p>
 <p>When cells are tightly packed or “aggregated,” their signals often overlap.</p>
 <ol class="arabic simple">
 <li><p><strong>The Border Problem:</strong> If two T-cells are touching, how does the computer decide where one membrane ends and the other begins?</p></li>
@@ -433,9 +439,9 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="summary-of-findings">
-<h2>📝 Summary of Findings<a class="headerlink" href="#summary-of-findings" title="Permalink to this heading">#</a></h2>
+<h2>Summary of Findings<a class="headerlink" href="#summary-of-findings" title="Permalink to this heading">#</a></h2>
 <p>Before finishing, reflect on <strong>Intensity Thresholding</strong>:
-If you set your “Min” intensity too high (as practiced in Exercise 1), would you lose the “weakly positive” PD-L1 cells? How does this impact our understanding of the Tumor Microenvironment?</p>
+If you set your “Min” intensity too high (as practiced in Exercise 1), would you lose the “weakly positive” PD-L1 cells? How does this impact our understanding of tumor microenvironment?</p>
 </section>
 </section>
 
@@ -475,7 +481,7 @@ If you set your “Min” intensity too high (as practiced in Exercise 1), would
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercise 1: Technical Foundations of Digital Pathology</p>
+        <p class="prev-next-title">Exercise 1: Technical foundations of digital pathology</p>
       </div>
     </a>
 </div>
@@ -494,18 +500,15 @@ If you set your “Min” intensity too high (as practiced in Exercise 1), would
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-from-pixels-to-segments">Part 1: From Pixels to Segments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions">Reflection Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-pixels-to-segments">From pixels to segments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-phenotypes">Defining phenotypes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morphology-lineage">Morphology &amp; Lineage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subcellular-localization">Subcellular localization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-defining-phenotypes">Part 2: Defining Phenotypes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-a-morphology-lineage">Section A: Morphology &amp; Lineage</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-b-subcellular-localization">Section B: Subcellular Localization</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-lineage-vs-functional-markers">Part 3: Lineage vs. Functional Markers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lineage-vs-functional-markers">Lineage vs. functional markers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-real-world-challenge-signal-aggregation">The “Real World” Challenge: Signal Aggregation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-findings">📝 Summary of Findings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-findings">Summary of Findings</a></li>
 </ul>
   </nav></div>
 
