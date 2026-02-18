@@ -3,3 +3,4 @@ root: index
 chapters:
   - file: exercise1
   - file: exercise2
+  - file: exercise3
