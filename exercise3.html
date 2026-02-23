@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercise3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Exercise 4: Tissue domains exploration with UTAG" href="exercise4.html" />
     <link rel="prev" title="Exercise 2: Biological interpretation &amp; cell phenotyping" href="exercise2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -170,6 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="exercise1.html">Exercise 1: Technical foundations of digital pathology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise2.html">Exercise 2: Biological interpretation &amp; cell phenotyping</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercise 3: Spatial architecture of tumor microenvironment with SCIMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise4.html">Exercise 4: Tissue domains exploration with UTAG</a></li>
 </ul>
 
     </div>
@@ -471,18 +473,6 @@ Step 6 → Map Cell Neighbourhoods
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Markers : </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Metadata columns : </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Spatial coordinates stored in : adata.obsm[&#39;spatial&#39;]&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scimap</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scanpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sc</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">anndata</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ad</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scimap&#39;
 </pre></div>
 </div>
 </div>
@@ -1141,6 +1131,15 @@ Step 6 → Map Cell Neighbourhoods
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Exercise 2: Biological interpretation &amp; cell phenotyping</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="exercise4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercise 4: Tissue domains exploration with UTAG</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
