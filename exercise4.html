@@ -330,7 +330,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize-domain-maps-and-compare-core-84-vs-core-42">Step 3: Visualize domain maps and compare Core 84 vs Core 42</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-adjust-max-dist">Step 4: Adjust max_dist</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-interpret-domains-using-composition-and-marker-signatures">Step 5: Interpret domains using composition and marker signatures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-bonus-compare-scimap-and-utag-results">Step 6: (Bonus) Compare SCIMAP and UTAG results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-bonus-compare-scimap-and-utag-results">Step 6 (Bonus): Compare SCIMAP and UTAG results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-do-the-methods-agree-on-the-main-structures">Part 1: Do the methods agree on the main structures?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-what-does-each-method-emphasize">Part 2: What does each method emphasize?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-robustness-and-practical-choice">Part 3: Robustness and practical choice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Step 6: (Bonus) Compare SCIMAP and UTAG results</a></li>
 </ul>
             </nav>
         </div>
@@ -399,12 +405,12 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Key question: Can you detect differences in tumor microenvironment architecture computationally using only per-cell spatial coordinates and protein expression?</p>
+<p>Key question: Can you detect differences in tumor microenvironment architecture computationally using only per-cell spatial coordinates via UTAG, and did you see difference between results from UTAG and SCIMAP?</p>
 </section>
 <hr class="docutils" />
 <section id="why-utag-for-this-question">
 <h2>Why UTAG for this question<a class="headerlink" href="#why-utag-for-this-question" title="Permalink to this heading">#</a></h2>
-<p>Neighborhood features describe the local context around each cell. UTAG turns these local contexts into tissue-level structure by identifying spatially coherent domains. The output is a domain map that highlights microanatomical regions such as tumor nests, stromal bands, and interface-like zones, without requiring manual annotation.</p>
+<p>Neighborhood features describe the local context around each cell. UTAG turns these local contexts into tissue-level structure by identifying spatially coherent domains. The output is a domain map that highlights microanatomical regions such as tumor nests, stromal bands, and interface-like zones.</p>
 <p>Conceptually, UTAG does three things:</p>
 <ol class="arabic simple">
 <li><p>It constructs a spatial graph that defines which cells are neighbors.</p></li>
@@ -417,10 +423,9 @@ document.write(`
 <h2>Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
 <p>By the end of this exercise you will be able to:</p>
 <ol class="arabic simple">
-<li><p>Construct a spatial neighbor graph and choose a reasonable distance cutoff for defining adjacency.</p></li>
+<li><p>Construct a spatial neighbor graph and choose a reasonable parameter (resolution).</p></li>
 <li><p>Run UTAG to compute domain labels and generate a tissue domain map.</p></li>
 <li><p>Interpret domains using cell-type composition and marker profiles.</p></li>
-<li><p>Compare domain-level architecture between two tissue cores using simple summary statistics.</p></li>
 </ol>
 </section>
 <hr class="docutils" />
@@ -507,17 +512,24 @@ Step 6 → Bonus: Compare SCIMAP and UTAG.
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Localadmin_kangzigi\.conda\envs\utag\lib\site-packages\numba\core\decorators.py:282: RuntimeWarning: nopython is set for njit and is ignored
+  warnings.warn(&#39;nopython is set for njit and is ignored&#39;, RuntimeWarning)
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying UTAG Algorithm...
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2aca0d657c4442dd806e33998c0f5bd8", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00,  6.07it/s]
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "012f0349ba824a7695118b925f5baeac", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriding provided number of PCA dimensions to match number of features: 5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00,  5.97it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying Leiden Clustering at Resolution: 0.3...
 Applying UTAG Algorithm...
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e63eafccb4dd46c79d959c6eaf18552f", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 15.12it/s]
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "886e8cb241764175a394502e93e81df7", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 15.61it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying Leiden Clustering at Resolution: 0.3...
@@ -566,7 +578,7 @@ Applying UTAG Algorithm...
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## To be done by student based on step 2</span>
-<span class="c1">## for example</span>
+<span class="c1">## for example: </span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">utag</span><span class="p">(</span>
     <span class="n">tma1</span><span class="p">,</span>
     <span class="n">slide_key</span><span class="o">=</span><span class="s2">&quot;imageid&quot;</span><span class="p">,</span>
@@ -574,7 +586,7 @@ Applying UTAG Algorithm...
     <span class="n">normalization_mode</span><span class="o">=</span><span class="s1">&#39;l1_norm&#39;</span><span class="p">,</span>
     <span class="n">apply_clustering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">clustering_method</span> <span class="o">=</span> <span class="s1">&#39;leiden&#39;</span><span class="p">,</span> 
-    <span class="n">resolutions</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">]</span>
+    <span class="n">resolutions</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -583,10 +595,10 @@ Applying UTAG Algorithm...
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying UTAG Algorithm...
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3006902a359f47ce8809d4d67de152cc", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 16.92it/s]
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "09bcc3060ee14111a851dbb605001fbe", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 11.20it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying Leiden Clustering at Resolution: 0.2...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Applying Leiden Clustering at Resolution: 0.4...
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -596,12 +608,14 @@ Applying UTAG Algorithm...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spatial</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;UTAG Label_leiden_0.2&#39;</span><span class="p">,</span> <span class="n">spot_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remember to change the column name for &quot;color&quot;</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spatial</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;UTAG Label_leiden_0.4&#39;</span><span class="p">,</span> <span class="n">spot_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/68701034325fef9180e4a9e70e457c3678130da147972c56708182e8a88b16af.png" src="_images/68701034325fef9180e4a9e70e457c3678130da147972c56708182e8a88b16af.png" />
+<img alt="_images/03ce36f67e6ee0d1d7dbca9b5f168e09941dcc24ae257fe3ff7ef0d7f7317893.png" src="_images/03ce36f67e6ee0d1d7dbca9b5f168e09941dcc24ae257fe3ff7ef0d7f7317893.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -619,6 +633,23 @@ Applying UTAG Algorithm...
 <h2>Step 5: Interpret domains using composition and marker signatures<a class="headerlink" href="#step-5-interpret-domains-using-composition-and-marker-signatures" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 1799 × 6
+    obs: &#39;imageid&#39;, &#39;X_centroid&#39;, &#39;Y_centroid&#39;, &#39;Area&#39;, &#39;MajorAxisLength&#39;, &#39;MinorAxisLength&#39;, &#39;Eccentricity&#39;, &#39;Solidity&#39;, &#39;Perimeter&#39;, &#39;Roundness&#39;, &#39;phenotype&#39;, &#39;batch&#39;, &#39;spatial_cluster&#39;, &#39;spatial_community&#39;, &#39;UTAG Label_leiden_0.4&#39;
+    uns: &#39;pca&#39;, &#39;neighbors&#39;, &#39;UTAG Label_leiden_0.4&#39;, &#39;UTAG Label_leiden_0.4_colors&#39;, &#39;phenotype_colors&#39;
+    obsm: &#39;spatial&#39;, &#39;X_pca&#39;, &#39;UTAG Label_leiden_0.4_probabilities&#39;
+    varm: &#39;PCs&#39;
+    obsp: &#39;distances&#39;, &#39;connectivities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">var_order</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cm</span><span class="o">.</span><span class="n">dendrogram_col</span><span class="o">.</span><span class="n">reordered_ind</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
@@ -627,44 +658,72 @@ Applying UTAG Algorithm...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO- normalize the marker expression</span>
-<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">matrixplot</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">matrixplot</span><span class="p">(</span>
     <span class="n">results</span><span class="p">,</span>
     <span class="n">var_names</span> <span class="o">=</span> <span class="n">var_order</span><span class="p">,</span> 
-    <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;UTAG Label_leiden_0.2&quot;</span><span class="p">,</span>
+    <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;UTAG Label_leiden_0.4&quot;</span><span class="p">,</span>
     <span class="n">dendrogram</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span>
+    <span class="n">standard_scale</span> <span class="o">=</span> <span class="s2">&quot;var&quot;</span><span class="p">,</span> 
     <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f8f20c9fd73292bdf890905c499e87b74d0bb6c9fd04d7f4881fd20654cbcf1e.png" src="_images/f8f20c9fd73292bdf890905c499e87b74d0bb6c9fd04d7f4881fd20654cbcf1e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: dendrogram data not found (using key=dendrogram_UTAG Label_leiden_0.4). Running `sc.tl.dendrogram` with default parameters. For fine tuning it is recommended to run `sc.tl.dendrogram` independently.
+</pre></div>
+</div>
+<img alt="_images/815b45cf853679bf91c8f8d9c62cb44aa4fd354df040495dacc482c29d197e2d.png" src="_images/815b45cf853679bf91c8f8d9c62cb44aa4fd354df040495dacc482c29d197e2d.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapper</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;0&#39;</span><span class="p">:</span> <span class="s1">&#39;Stroma&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="s1">&#39;Tumor&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="s1">&#39;Lymphoid&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="s1">&#39;Immune Mixture&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;0&#39;</span><span class="p">:</span> <span class="s1">&#39;Tumor&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="s1">&#39;Stroma&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="s1">&#39;Stroma&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="s1">&#39;CD3d&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;4&#39;</span><span class="p">:</span> <span class="s1">&#39;CD11c&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;5&#39;</span><span class="p">:</span> <span class="s1">&#39;Stroma&#39;</span>
 <span class="p">}</span>
 
-<span class="n">results</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;UTAG Label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;UTAG Label_leiden_0.2&#39;</span><span class="p">])</span>
-<span class="n">results</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;T/S&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;UTAG Label_leiden_0.2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">mapper</span><span class="p">))</span>
+<span class="n">results</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;UTAG Label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;UTAG Label_leiden_0.4&#39;</span><span class="p">])</span>
+<span class="n">results</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;T/S&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;UTAG Label_leiden_0.4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">mapper</span><span class="p">))</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spatial</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;T/S&#39;</span><span class="p">,</span> <span class="n">spot_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/23d84f82612858a6adf7a62261c7e5f157b24f7a50958bc6f6fe1361a0b6411f.png" src="_images/23d84f82612858a6adf7a62261c7e5f157b24f7a50958bc6f6fe1361a0b6411f.png" />
+<img alt="_images/d70b80156c3ff51564bf5bc50441d5e69dfc41a966eadcd06d13adf32c618de9.png" src="_images/d70b80156c3ff51564bf5bc50441d5e69dfc41a966eadcd06d13adf32c618de9.png" />
 </div>
 </div>
 </section>
 <section id="step-6-bonus-compare-scimap-and-utag-results">
-<h2>Step 6: (Bonus) Compare SCIMAP and UTAG results<a class="headerlink" href="#step-6-bonus-compare-scimap-and-utag-results" title="Permalink to this heading">#</a></h2>
+<h2>Step 6 (Bonus): Compare SCIMAP and UTAG results<a class="headerlink" href="#step-6-bonus-compare-scimap-and-utag-results" title="Permalink to this heading">#</a></h2>
+<section id="part-1-do-the-methods-agree-on-the-main-structures">
+<h3>Part 1: Do the methods agree on the main structures?<a class="headerlink" href="#part-1-do-the-methods-agree-on-the-main-structures" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>When you overlay SCIMAP RCN labels and UTAG domains on the same core, where do they agree most clearly, and where do they disagree?</p></li>
+<li><p>Do some UTAG domains correspond mostly to one RCN type, or do they contain multiple RCNs mixed together?</p></li>
+</ol>
+</section>
+<section id="part-2-what-does-each-method-emphasize">
+<h3>Part 2: What does each method emphasize?<a class="headerlink" href="#part-2-what-does-each-method-emphasize" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple" start="3">
+<li><p>Where is the tumor–stroma interface according to cell types, and which method captures it more clearly: RCNs or UTAG domains?</p></li>
+<li><p>Do you see the interface as a distinct region, or as a gradual transition across space? Which output supports your interpretation?</p></li>
+</ol>
+</section>
+<section id="part-3-robustness-and-practical-choice">
+<h3>Part 3: Robustness and practical choice<a class="headerlink" href="#part-3-robustness-and-practical-choice" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple" start="5">
+<li><p>If you change one parameter in each method, such as neighborhood radius or k in SCIMAP, and max_dist in UTAG, which output changes more? What does that tell you about scale sensitivity and stability?</p></li>
+</ol>
+</section>
+</section>
+<section id="id1">
+<h2>Step 6: (Bonus) Compare SCIMAP and UTAG results<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -734,7 +793,13 @@ Applying UTAG Algorithm...
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-visualize-domain-maps-and-compare-core-84-vs-core-42">Step 3: Visualize domain maps and compare Core 84 vs Core 42</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-adjust-max-dist">Step 4: Adjust max_dist</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-interpret-domains-using-composition-and-marker-signatures">Step 5: Interpret domains using composition and marker signatures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-bonus-compare-scimap-and-utag-results">Step 6: (Bonus) Compare SCIMAP and UTAG results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-bonus-compare-scimap-and-utag-results">Step 6 (Bonus): Compare SCIMAP and UTAG results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-do-the-methods-agree-on-the-main-structures">Part 1: Do the methods agree on the main structures?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-what-does-each-method-emphasize">Part 2: What does each method emphasize?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-robustness-and-practical-choice">Part 3: Robustness and practical choice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Step 6: (Bonus) Compare SCIMAP and UTAG results</a></li>
 </ul>
   </nav></div>
 
