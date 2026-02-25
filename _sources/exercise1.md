@@ -14,11 +14,7 @@ In this exercise, we use **Avivator**, a lightweight, web-based visualizer for h
 Click on any channel name to expand the full list.
 
 :::{admonition} TASK: Count the available channels and look at the metadata (wavelengths/names).
-**Question:** How many channels are present, and what is the relationship between the wavelength (nm) and the assigned color?
-:::
-
-:::{dropdown} Click for Answer
-There are **7 channels** (including DAPI). Wavelengths usually correspond to the emission spectra of the fluorophores used (e.g., 465nm for Blue/DAPI).
+**Question:** How many channels are present, and at what wavelength were they captured?
 :::
 
 ---
@@ -33,7 +29,7 @@ Spatial proteomics data often has a much wider dynamic range than standard photo
 
 :::{admonition} TASK: Bit depth discovery
 :class: tip
-Based on the maximum value visible on the slider when set to "Full," what is the **bit depth** of this image?
+Based on the maximum value visible on the slider when set to "Full," what is the **bit depth** of this image? ###Gives 3.4e!!!
 *Hint: $2^8 = 256$, $2^{16} = 65,536$.*
 :::
 
