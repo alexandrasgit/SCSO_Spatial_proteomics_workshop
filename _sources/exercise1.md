@@ -4,7 +4,7 @@ In this exercise, we use **Avivator**, a lightweight, web-based visualizer for h
 
 ## Getting Started
 
-1. **Launch the Viewer:** [Click here to open the Lung Cancer (LuCa) 7-color dataset in Avivator](https://avivator.gehlenborglab.org/?image_url=https://viv-demo.storage.googleapis.com/LuCa-7color_3x3component_data.ome.tif).
+1. **Launch the Viewer:** [Click here to open the Lung Cancer (LuCa) dataset in Avivator](https://avivator.gehlenborglab.org/?image_url=https://viv-demo.storage.googleapis.com/LuCa-7color_3x3component_data.ome.tif).
 2. **Explore the Interface:** On the right-hand side, you will see the **Channel Controller**.
 
 ---
@@ -29,8 +29,7 @@ Spatial proteomics data often has a much wider dynamic range than standard photo
 
 :::{admonition} TASK: Bit depth discovery
 :class: tip
-Based on the maximum value visible on the slider when set to "Full," what is the **bit depth** of this image? ###Gives 3.4e!!!
-*Hint: $2^8 = 256$, $2^{16} = 65,536$.*
+Based on the maximum value visible on the slider when set to "Full," what is the **bit depth** of this image?
 :::
 
 ---
