@@ -329,7 +329,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lineage-vs-functional-markers">Lineage vs. functional markers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-real-world-challenge-signal-aggregation">The “Real World” Challenge: Signal Aggregation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-of-signal-aggregation">Challenge of Signal Aggregation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-findings">Summary of Findings</a></li>
 </ul>
             </nav>
@@ -357,9 +357,9 @@ document.write(`
 </ol>
 <p><strong>Questions:</strong></p>
 <ul class="simple">
-<li><p><strong>Morphology vs. Mask:</strong> How does the segmentation algorithm handle a large, sprawling Tumor cell versus a small, round Lymphocyte?</p></li>
-<li><p><strong>Identify Errors:</strong> Can you find an area where two cells are merged into one mask (<strong>Under-segmentation</strong>) or one cell is split into two (<strong>Over-segmentation</strong>)?</p></li>
-<li><p><strong>Downstream Bias:</strong> If the computer misses the cell boundary and captures signal from a neighbor, how will that affect your “Mean Intensity” data?</p></li>
+<li><p><strong>Morphology vs. mask:</strong> How does the segmentation algorithm handle a large, sprawling Tumor cell versus a small, round Lymphocyte?</p></li>
+<li><p><strong>Identify errors:</strong> Can you find an area where two cells are merged into one mask (<strong>Under-segmentation</strong>) or one cell is split into two (<strong>Over-segmentation</strong>)?</p></li>
+<li><p><strong>Downstream bias:</strong> If the computer misses the cell boundary and captures signal from a neighbor, how will that affect your “Mean Intensity” data?</p></li>
 </ul>
 </div>
 </section>
@@ -377,8 +377,7 @@ document.write(`
 <div class="tip admonition">
 <p class="admonition-title">TASK:</p>
 <ul class="simple">
-<li><p><strong>The Ratio Challenge:</strong> Compare a <strong>Keratin+</strong> epithelial cell to a <strong>CD3+</strong> lymphocyte.</p></li>
-<li><p><strong>Question:</strong> Which cell type typically has a higher cytoplasm-to-nucleus ratio?</p></li>
+<li><p><strong>Ratio challenge:</strong> Compare a <strong>Keratin+</strong> epithelial cell to a <strong>CD3+</strong> lymphocyte. Which cell type typically has a higher cytoplasm-to-nucleus ratio?</p></li>
 <li><p><strong>Estimation:</strong> Using the scale-bar in the viewer, what is the approximate diameter (in <span class="math notranslate nohighlight">\(\mu m\)</span>) of a typical lymphocyte in this tissue?</p></li>
 </ul>
 </div>
@@ -403,8 +402,8 @@ document.write(`
 <td class="text-left"><p>Keratin, <span class="math notranslate nohighlight">\(\alpha\)</span>-SMA</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><strong>Membranous</strong></p></td>
-<td class="text-left"><p>Stains the outer boundary (the “skin”) of the cell.</p></td>
-<td class="text-left"><p>CD3, CD8, PD-L1</p></td>
+<td class="text-left"><p>Stains the outer boundary of the cell.</p></td>
+<td class="text-left"><p>CD3, PD-L1</p></td>
 </tr>
 </tbody>
 </table>
@@ -419,24 +418,24 @@ document.write(`
 <section id="lineage-vs-functional-markers">
 <h2>Lineage vs. functional markers<a class="headerlink" href="#lineage-vs-functional-markers" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Lineage Markers:</strong> Define the cell “type” (e.g., “I am a T-cell”).</p></li>
-<li><p><strong>Functional Markers:</strong> Define the cell “state” (e.g., “I am currently dividing”).</p></li>
+<li><p><strong>Lineage markers:</strong> Define the cell “type” (e.g., “I am a T-cell”).</p></li>
+<li><p><strong>Functional markers:</strong> Define the cell “state” (e.g., “I am currently dividing”).</p></li>
 </ul>
 <div class="tip admonition">
 <p class="admonition-title">TASK:</p>
-<p>Locate <strong>Ki67</strong> in the viewer. Since it only appears when a cell is in the active phases of the cell cycle, is it a Lineage or Functional marker? Why?</p>
+<p>Locate <strong>PD-L1 Expression</strong> page of the tour in the viewer. PD-L1 can be expressed by both tumor cells and immune cells. When we see it expressed on a T-cell, is it a Lineage or Functional marker? Why?</p>
 </div>
 </section>
 <hr class="docutils" />
-<section id="the-real-world-challenge-signal-aggregation">
-<h2>The “Real World” Challenge: Signal Aggregation<a class="headerlink" href="#the-real-world-challenge-signal-aggregation" title="Permalink to this heading">#</a></h2>
-<p>Navigate to the <strong>“Cytotoxic T-cells”</strong> tab and zoom in on a dense cluster of CD8/CD3 positive cells.</p>
+<section id="challenge-of-signal-aggregation">
+<h2>Challenge of Signal Aggregation<a class="headerlink" href="#challenge-of-signal-aggregation" title="Permalink to this heading">#</a></h2>
+<p>When cells are tightly packed, their signals often overlap, leading to <em>signal spillover</em>. Many spatial proteomics workflows use a <em>nuclear-seeding algorithm</em> (like Mesmer or CellPose) which identifies the DNA (DAPI) first and then expands a mask outward to capture the cytoplasm.</p>
 <div class="danger admonition">
-<p class="admonition-title">BONUS: Segmentation headache</p>
-<p>When cells are tightly packed or “aggregated,” their signals often overlap.</p>
+<p class="admonition-title">BONUS TASK:</p>
+<p>Navigate to the <strong>“Cytotoxic T-cells”</strong> tab and zoom in on a dense cluster of CD8/CD3 positive cells. Reflect on following questions:</p>
 <ol class="arabic simple">
-<li><p><strong>The Border Problem:</strong> If two T-cells are touching, how does the computer decide where one membrane ends and the other begins?</p></li>
-<li><p><strong>The “False Positive” Trap:</strong> If a CD8 signal “bleeds” into the mask of a neighboring cell that doesn’t actually express CD8, how might this lead to errors in your final cell counts?</p></li>
+<li><p>If two T-cells are touching, reflect how a circular expansion mask can fail to capture their full cell bodies. What happens with assymetrically shaped cells?</p></li>
+<li><p>If a CD8 signal bleeds into the mask of a neighboring cell that doesn’t actually express CD8, how might this lead to errors in your final cell counts?</p></li>
 </ol>
 </div>
 </section>
@@ -444,7 +443,7 @@ document.write(`
 <section id="summary-of-findings">
 <h2>Summary of Findings<a class="headerlink" href="#summary-of-findings" title="Permalink to this heading">#</a></h2>
 <p>Before finishing, reflect on <strong>Intensity Thresholding</strong>:
-If you set your “Min” intensity too high (as practiced in Exercise 1), would you lose the “weakly positive” PD-L1 cells? How does this impact our understanding of tumor microenvironment?</p>
+If you set your “Min” intensity too high (as practiced in Exercise 1), would you lose the <em>weakly positive</em> PD-L1 cells? How does this impact our understanding of tumor microenvironment?</p>
 </section>
 </section>
 
@@ -519,7 +518,7 @@ If you set your “Min” intensity too high (as practiced in Exercise 1), would
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lineage-vs-functional-markers">Lineage vs. functional markers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-real-world-challenge-signal-aggregation">The “Real World” Challenge: Signal Aggregation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-of-signal-aggregation">Challenge of Signal Aggregation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-findings">Summary of Findings</a></li>
 </ul>
   </nav></div>
