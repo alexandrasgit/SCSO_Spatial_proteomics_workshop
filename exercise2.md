@@ -66,7 +66,7 @@ Identify one marker in this image that is purely **Nuclear** and one that is pur
 
 :::{admonition} TASK:
 :class: tip
-Locate **PD-L1 Expression** page of the tour in the viewer. PD-L1 can be expressed by both tumor cells and immune cells. When we see it expressed on a T-cell, is it a Lineage or Functional marker? Why?
+Locate **"PD-L1 Expression"** page of the tour in the viewer. PD-L1 can be expressed by both tumor cells and immune cells. When we see it expressed on a T-cell, is it a Lineage or Functional marker? Why?
 :::
 
 ---
@@ -78,7 +78,7 @@ When cells are tightly packed, their signals often overlap, leading to *signal s
 :::{admonition} BONUS TASK:
 :class: danger
 
-Navigate to the **"Cytotoxic T-cells"** tab and zoom in on a dense cluster of CD8/CD3 positive cells. Reflect on following questions:
+Navigate to the **"Cytotoxic T-cells"** tab and zoom in on a dense cluster of CD8/CD3 positive cells. **Reflect** on following questions:
 
 1. If two T-cells are touching, reflect how a circular expansion mask can fail to capture their full cell bodies. What happens with assymetrically shaped cells?
 2. If a CD8 signal bleeds into the mask of a neighboring cell that doesn't actually express CD8, how might this lead to errors in your final cell counts?
@@ -88,5 +88,5 @@ Navigate to the **"Cytotoxic T-cells"** tab and zoom in on a dense cluster of CD
 
 ## Summary of Findings
 
-Before finishing, reflect on **Intensity Thresholding**:
+Before finishing, **reflect** on **Intensity Thresholding**:
 If you set your "Min" intensity too high (as practiced in Exercise 1), would you lose the *weakly positive* PD-L1 cells? How does this impact our understanding of tumor microenvironment?
