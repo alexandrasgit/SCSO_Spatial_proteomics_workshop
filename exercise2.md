@@ -15,9 +15,9 @@ Before we can count cells, a computer must "segment" them—drawing a digital bo
 
 **Questions:**
 
-* **Morphology vs. Mask:** How does the segmentation algorithm handle a large, sprawling Tumor cell versus a small, round Lymphocyte?
-* **Identify Errors:** Can you find an area where two cells are merged into one mask (**Under-segmentation**) or one cell is split into two (**Over-segmentation**)?
-* **Downstream Bias:** If the computer misses the cell boundary and captures signal from a neighbor, how will that affect your "Mean Intensity" data?
+* **Morphology vs. mask:** How does the segmentation algorithm handle a large, sprawling Tumor cell versus a small, round Lymphocyte?
+* **Identify errors:** Can you find an area where two cells are merged into one mask (**Under-segmentation**) or one cell is split into two (**Over-segmentation**)?
+* **Downstream bias:** If the computer misses the cell boundary and captures signal from a neighbor, how will that affect your "Mean Intensity" data?
 :::
 
 ---
@@ -38,8 +38,7 @@ Spatial proteomics allows us to distinguish cells not just by *what* they expres
 :::{admonition} TASK:
 :class: tip
 
-* **The Ratio Challenge:** Compare a **Keratin+** epithelial cell to a **CD3+** lymphocyte.
-* **Question:** Which cell type typically has a higher cytoplasm-to-nucleus ratio?
+* **Ratio challenge:** Compare a **Keratin+** epithelial cell to a **CD3+** lymphocyte. Which cell type typically has a higher cytoplasm-to-nucleus ratio?
 * **Estimation:** Using the scale-bar in the viewer, what is the approximate diameter (in $\mu m$) of a typical lymphocyte in this tissue?
 :::
 
@@ -51,7 +50,7 @@ Knowing *where* a protein is supposed to be helps us identify real signal from "
 | :--- | :--- | :--- |
 | **Nuclear** | Stains the DNA or proteins inside the nucleus. | DNA (Hoechst/DAPI) |
 | **Cytoplasmic** | Stains the main body/cytoskeleton of the cell. | Keratin, $\alpha$-SMA |
-| **Membranous** | Stains the outer boundary (the "skin") of the cell. | CD3, CD8, PD-L1 |
+| **Membranous** | Stains the outer boundary of the cell. | CD3, PD-L1 |
 
 :::{admonition} TASK:
 :class: tip
@@ -62,26 +61,27 @@ Identify one marker in this image that is purely **Nuclear** and one that is pur
 
 ## Lineage vs. functional markers
 
-* **Lineage Markers:** Define the cell "type" (e.g., "I am a T-cell").
-* **Functional Markers:** Define the cell "state" (e.g., "I am currently dividing").
+* **Lineage markers:** Define the cell "type" (e.g., "I am a T-cell").
+* **Functional markers:** Define the cell "state" (e.g., "I am currently dividing").
 
 :::{admonition} TASK:
 :class: tip
-Locate **Ki67** in the viewer. Since it only appears when a cell is in the active phases of the cell cycle, is it a Lineage or Functional marker? Why?
+Locate **PD-L1 Expression** page of the tour in the viewer. PD-L1 can be expressed by both tumor cells and immune cells. When we see it expressed on a T-cell, is it a Lineage or Functional marker? Why?
 :::
 
 ---
 
-## The "Real World" Challenge: Signal Aggregation
+## Challenge of Signal Aggregation
 
-Navigate to the **"Cytotoxic T-cells"** tab and zoom in on a dense cluster of CD8/CD3 positive cells.
+When cells are tightly packed, their signals often overlap, leading to *signal spillover*. Many spatial proteomics workflows use a *nuclear-seeding algorithm* (like Mesmer or CellPose) which identifies the DNA (DAPI) first and then expands a mask outward to capture the cytoplasm.
 
-:::{admonition} BONUS: Segmentation headache
+:::{admonition} BONUS TASK:
 :class: danger
-When cells are tightly packed or "aggregated," their signals often overlap.
 
-1. **The Border Problem:** If two T-cells are touching, how does the computer decide where one membrane ends and the other begins?
-2. **The "False Positive" Trap:** If a CD8 signal "bleeds" into the mask of a neighboring cell that doesn't actually express CD8, how might this lead to errors in your final cell counts?
+Navigate to the **"Cytotoxic T-cells"** tab and zoom in on a dense cluster of CD8/CD3 positive cells. Reflect on following questions:
+
+1. If two T-cells are touching, reflect how a circular expansion mask can fail to capture their full cell bodies. What happens with assymetrically shaped cells?
+2. If a CD8 signal bleeds into the mask of a neighboring cell that doesn't actually express CD8, how might this lead to errors in your final cell counts?
 :::
 
 ---
@@ -89,4 +89,4 @@ When cells are tightly packed or "aggregated," their signals often overlap.
 ## Summary of Findings
 
 Before finishing, reflect on **Intensity Thresholding**:
-If you set your "Min" intensity too high (as practiced in Exercise 1), would you lose the "weakly positive" PD-L1 cells? How does this impact our understanding of tumor microenvironment?
+If you set your "Min" intensity too high (as practiced in Exercise 1), would you lose the *weakly positive* PD-L1 cells? How does this impact our understanding of tumor microenvironment?
