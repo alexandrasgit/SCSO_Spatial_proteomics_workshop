@@ -331,18 +331,18 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-define-cell-identities">Step 3: Define Cell Identities</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rules">The Rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-classification">Run the Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-classification">Run the classification</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-quality-control">Step 4: Quality Control</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-measuring-the-social-distance-between-cell-types">Step 5: Measuring the “Social Distance” Between Cell Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-measuring-the-social-distance-between-cell-types">Step 5: Measuring the Social Distance Between Cell Types</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-this-matter">Why does this matter?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-mapping-recurrent-cellular-neighbourhoods-rcns">Step 6: Mapping Recurrent Cellular Neighbourhoods (RCNs)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rcn-approach-in-three-steps">The RCN approach in three steps:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-optimal-number-of-neighbourhoods">Finding the Optimal Number of Neighbourhoods</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-neighbourhoods">Interpreting the Neighbourhoods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-optimal-number-of-neighbourhoods">Finding the optimal number of neighbourhoods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-neighbourhoods">Interpreting neighbourhoods</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-biological-names-to-clusters">Assign Biological Names to Clusters</a></li>
 </ul>
 </li>
@@ -609,20 +609,17 @@ Step 6 → Map Cell Neighbourhoods
     <span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">,</span>    <span class="s1">&#39;Lymphoid&#39;</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span>  <span class="kc">None</span><span class="p">],</span>
 <span class="p">]</span>
 
-<span class="c1"># Build DataFrame and save to CSV — this is the input format Scimap expects</span>
+<span class="c1"># Build DataFrame — this is the input format Scimap expects</span>
 <span class="n">phenotype_workflow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Phenotyping workflow:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">phenotype_workflow</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-
-<span class="c1"># Save the workflow for reuse</span>
-<span class="n">phenotype_workflow</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;phenotype_workflow.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="run-the-classification">
-<h3>Run the Classification<a class="headerlink" href="#run-the-classification" title="Permalink to this heading">#</a></h3>
+<h3>Run the classification<a class="headerlink" href="#run-the-classification" title="Permalink to this heading">#</a></h3>
 <p>With our rules defined, we can now apply them. Scimap first <strong>rescales</strong> each marker’s intensity within [0, 1] per image (to correct for batch effects between cores), then applies the phenotyping logic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -656,7 +653,7 @@ Step 6 → Map Cell Neighbourhoods
 </section>
 <section id="step-4-quality-control">
 <h2>Step 4: Quality Control<a class="headerlink" href="#step-4-quality-control" title="Permalink to this heading">#</a></h2>
-<p><strong>Never skip QC.</strong> After automated phenotyping, we must verify the results make biological sense. We use two complementary checks:</p>
+<p><strong>Never skip QC.</strong> After automated phenotyping, we must verify the results make biological sense. You use, for instance, two complementary checks:</p>
 <p><strong>A) Marker heatmap</strong> — Each row is a phenotype; each column is a marker. If the logic is correct:</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Cancer</span></code> row should show high expression <strong>only</strong> for CK7 and ECadherin</p></li>
@@ -736,12 +733,12 @@ Step 6 → Map Cell Neighbourhoods
 </div>
 </section>
 <section id="step-5-measuring-the-social-distance-between-cell-types">
-<h2>Step 5: Measuring the “Social Distance” Between Cell Types<a class="headerlink" href="#step-5-measuring-the-social-distance-between-cell-types" title="Permalink to this heading">#</a></h2>
+<h2>Step 5: Measuring the Social Distance Between Cell Types<a class="headerlink" href="#step-5-measuring-the-social-distance-between-cell-types" title="Permalink to this heading">#</a></h2>
 <p>Now we get to the heart of the exercise. We will measure the <strong>physical distance</strong> from every Cancer cell to its nearest neighbour of each other phenotype.</p>
 <section id="why-does-this-matter">
 <h3>Why does this matter?<a class="headerlink" href="#why-does-this-matter" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>A <strong>left-shifted</strong> distance distribution (peak at short distances) means immune cells are <strong>physically close</strong> to tumour cells — consistent with active infiltration.</p></li>
+<li><p>A <strong>left-shifted</strong> distance distribution (peak at short distances) means immune cells are <strong>physically close</strong> to tumour cells.</p></li>
 <li><p>A <strong>right-shifted</strong> distribution (peak at longer distances) suggests immune cells are present in the tissue but <strong>excluded</strong> from the tumour.</p></li>
 </ul>
 <div class="tip admonition">
@@ -804,12 +801,11 @@ Step 6 → Map Cell Neighbourhoods
 </div>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">🔬 The Proximity Test</p>
+<p class="admonition-title">TASK:</p>
 <p>Examine the Cancer → Lymphoid distance distribution above and answer:</p>
 <ol class="arabic simple">
-<li><p><strong>The “Close Contact” Peak:</strong> Which core has a higher density of Lymphoid cells at very short distances from Cancer cells?</p></li>
-<li><p><strong>The “Exclusion” Gap:</strong> Does either core show a pronounced hump at a <em>longer</em> distance? This suggests immune cells are present in the tissue but physically barred from entering the tumour.</p></li>
-<li><p><strong>Clinical Classification:</strong> In immunotherapy research, tumours are classified as <em>Inflamed</em> (T cells inside tumour), <em>Excluded</em> (T cells at border), or <em>Desert</em> (no T cells). Based only on this plot, how would you classify each core?</p></li>
+<li><p>Which core has a higher density of Lymphoid cells at very short distances from Cancer cells?</p></li>
+<li><p>Does either core show a pronounced hump at a <em>longer</em> distance? This suggests immune cells are present in the tissue but physically barred from entering the tumour.</p></li>
 </ol>
 <blockquote>
 <div><p>Did your prediction match the result? If not, what might explain the difference?</p>
@@ -863,7 +859,7 @@ Step 6 → Map Cell Neighbourhoods
 </div>
 </section>
 <section id="finding-the-optimal-number-of-neighbourhoods">
-<h3>Finding the Optimal Number of Neighbourhoods<a class="headerlink" href="#finding-the-optimal-number-of-neighbourhoods" title="Permalink to this heading">#</a></h3>
+<h3>Finding the optimal number of neighbourhoods<a class="headerlink" href="#finding-the-optimal-number-of-neighbourhoods" title="Permalink to this heading">#</a></h3>
 <p>We use the <strong>elbow method</strong> to choose how many RCNs to define. We plot the k-means inertia (sum of squared distances to cluster centres) for different values of <em>k</em>. The “elbow” — where the inertia starts decreasing much more slowly — is a good choice for <em>k</em>.</p>
 <blockquote>
 <div><p><strong>What to look for:</strong> Find the value of <em>k</em> where the curve bends most sharply. Adding clusters beyond that point gives diminishing returns.</p>
@@ -913,8 +909,8 @@ Step 6 → Map Cell Neighbourhoods
 </div>
 </div>
 </section>
-<section id="interpreting-the-neighbourhoods">
-<h3>Interpreting the Neighbourhoods<a class="headerlink" href="#interpreting-the-neighbourhoods" title="Permalink to this heading">#</a></h3>
+<section id="interpreting-neighbourhoods">
+<h3>Interpreting neighbourhoods<a class="headerlink" href="#interpreting-neighbourhoods" title="Permalink to this heading">#</a></h3>
 <p>Now we inspect the cell-type composition of each cluster to assign biological names. We use a stacked bar plot — the dominant phenotype in each cluster determines its identity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1029,8 +1025,8 @@ Step 6 → Map Cell Neighbourhoods
 <p class="admonition-title">TASK:</p>
 <p>Examine the RCN spatial maps and consider:</p>
 <ol class="arabic simple">
-<li><p><strong>Core comparison:</strong> Which RCN is proportionally larger in Core 84 vs Core 42? How does this relate to the distance analysis in Step 5?</p></li>
-<li><p><strong>Radius sensitivity:</strong> If you <strong>doubled</strong> the neighbourhood radius from 50 to 100 pixels, what would happen to the RCNs? Which biological structures would become <em>more</em> visible, and which would become <em>less specific</em>?</p></li>
+<li><p>Which RCN is proportionally larger in Core 84 vs Core 42? How does this relate to the distance analysis in Step 5?</p></li>
+<li><p>If you <strong>doubled</strong> the neighbourhood radius from 50 to 100 pixels, what would happen to the RCNs? Which biological structures would become <em>more</em> visible, and which would become <em>less specific</em>?</p></li>
 </ol>
 </div>
 </section>
@@ -1168,18 +1164,18 @@ Step 6 → Map Cell Neighbourhoods
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-define-cell-identities">Step 3: Define Cell Identities</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rules">The Rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-classification">Run the Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-classification">Run the classification</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-quality-control">Step 4: Quality Control</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-measuring-the-social-distance-between-cell-types">Step 5: Measuring the “Social Distance” Between Cell Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-measuring-the-social-distance-between-cell-types">Step 5: Measuring the Social Distance Between Cell Types</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-this-matter">Why does this matter?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-mapping-recurrent-cellular-neighbourhoods-rcns">Step 6: Mapping Recurrent Cellular Neighbourhoods (RCNs)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rcn-approach-in-three-steps">The RCN approach in three steps:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-optimal-number-of-neighbourhoods">Finding the Optimal Number of Neighbourhoods</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-neighbourhoods">Interpreting the Neighbourhoods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-optimal-number-of-neighbourhoods">Finding the optimal number of neighbourhoods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-neighbourhoods">Interpreting neighbourhoods</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-biological-names-to-clusters">Assign Biological Names to Clusters</a></li>
 </ul>
 </li>
