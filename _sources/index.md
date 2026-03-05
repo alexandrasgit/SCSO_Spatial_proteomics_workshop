@@ -28,7 +28,7 @@ By the end of this workshop, you will be able to:
 | :--- | :--- | :--- |
 | **Intro & Setup** | 5 Min | Accessing data & tools |
 | **Exercise 1: Technical** | 20 Min | Bit-depth, Scaling, & ROI Export |
-| **Exercise 2: Biological** | 20 Min | Phenotyping & Tissue Architecture |
+| **Exercise 2: Biological** | 15 Min | Phenotyping & Tissue Architecture |
 | **Discussion & Q&A** | 5 Min | |
 | **Exercise 3: SCIMAP analysis** | 60 Min | Spatial analysis of tumor microenvironment |
 | **Exercise 4: UTAG** | 15 Min | Tissue domains |
